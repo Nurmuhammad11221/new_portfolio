@@ -1,135 +1,130 @@
 <template>
-    <div  class="nav__container">
-        <div class="right__nav">
-
-            <h1>FINEDEV.uz</h1>
-
+    <div class="nav__container">
+      <!-- Mobil versiya uchun menyuni ochuvchi/yopuvchi tugma -->
+      <button class="toggle-button" @click="toggleNavbar">
+        ☰
+      </button>
+  
+      <div class="left__nav">
+        <h1>FINEDEV.uz</h1>
+  
+        <!-- Mobil va desktop versiyada ko'rinishi har xil bo'ladigan menyu -->
+        <div :class="['menu', { 'open': isNavbarOpen }]">
+          <li>
+            <a class="nav__link" href="#home">Bosh Sahifa</a>
+          </li>
+          <li>
+            <a class="nav__link" href="">Men haqimda</a>
+          </li>
+          <li>
+            <a class="nav__link" href="">Ko'nikmalar</a>
+          </li>
+          <li>
+            <a class="nav__link" href="">Bog'lanish</a>
+          </li>
         </div>
-
-        <div class="left__nav">
-            <li>
-                <a class="nav__link" href="#home">Bosh Sahifa</a>
-            </li>
-
-            <li>
-                <a class="nav__link" href="">Men haqimda</a>
-            </li>
-
-            <li>
-                <a class="nav__link" href="">Ko'nikmalar</a>
-            </li>
-
-            <li>
-                <a class="nav__link" href="">Xizmatlar</a>
-            </li>
-
-            <li>
-                <a class="nav__link" href="">Portfolio</a>
-            </li>
-
-            <li>
-                <a class="nav__link" href="">Bog'lanish</a>
-            </li>
-
-
-        </div>
+      </div>
     </div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      showContent: false,
-    };
-  },
-  mounted() {
-    setTimeout(() => {
-      this.showContent = true;
-    }, 500);
-  },
-  data() {
-    return {
-      isNavbarOpen: false
-    };
-  },
-  methods: {
-    toggleNavbar() {
-      this.isNavbarOpen = !this.isNavbarOpen;
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        isNavbarOpen: false
+      };
+    },
+    methods: {
+      toggleNavbar() {
+        this.isNavbarOpen = !this.isNavbarOpen;
+      }
     }
+  };
+  </script>
+  
+  <style scoped>
+  .nav__container {
+    height: 65px;
+    color: white;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
   }
   
-};
-</script>
-
-<style scoped>
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity 1s;
+  .left__nav {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .menu {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 40px;
+  }
+  
+  .nav__link {
+    color: white;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+  
+  .nav__link:hover {
+    color: black;
+  }
+  
+  .toggle-button {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none; /* Mobilda ko'rinadi */
+  }
+  
+  /* Mobil versiya uchun media query */
+  @media (max-width: 768px) {
+    .menu {
+      display: none; /* Default ko'rinmaydi */
+      flex-direction: column;
+      position: absolute;
+      top: 65px;
+      left: 0;
+      width: 100%;
+      background-color: blue;
+      padding: 10px 0;
+      z-index: 10;
+      transition: max-height 0.3s ease;
     }
-    .fade-enter, .fade-leave-to  {
-        opacity: 0;
+  
+    .menu.open {
+      display: flex; /* Tugma bosilganda ko'rinadi */
     }
-    .nav__container{
-        height: 65px;
-        color: white;
-        background-color: blue;
-        display: flex;
-        justify-content: space-around;
-        animation: fadeIn 1s ease-in-out 0.5s; 
-    }
-
-    .right__nav{
-        display: flex;
-        color: white;
-        align-items: center;
-    }
-
-    .left__nav{
-        display: flex;
-        align-items: center;
-        list-style-type: none;
-        gap: 40px;
-    }
-
-    .nav__link{
-        color: white ! important;
-        align-items: center;
-        transition: 0.3s;
-    }
-
-    .nav__link:hover{
-        color: black ! important;
-
-    }
-
+  
     .toggle-button {
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-      }
-
-   
-
-    @media (max-width: 768px) {
-
-
-        .nav__container{
-            height: 100px;
-            display: block;
-        }
-
-        .navbar-links {
-            display: flex;
-            flex-direction: row;
-          }
-          .toggle-button {
-            display: none;
-          }
-
-            
-        
+      display: block; /* Mobilda ko'rinadi */
+      position: absolute;
+      right: 20px; /* O'ng tomonda bo'lishi uchun */
+      top: 20px;
     }
-</style>
+  
+    .nav__container {
+      justify-content: flex-start;
+      padding: 0 10px;
+    }
+  
+    .nav__link {
+      padding: 10px 20px;
+      text-align: center;
+      width: 100%;
+      color: white;
+      text-decoration: none;
+    }
+  }
+  </style>
+  

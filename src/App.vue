@@ -2,25 +2,25 @@
     <Nav />
     <Header />
     <About/>
-    <!-- <Main />
-    <Footer /> -->
+    <Main />
+    <Footer /> 
   </template>
   
   <script>
   import Nav from './components/Nav.vue';
   import Header from './components/Header.vue';
   import About from './components/About.vue';
-//   import Main from './components/Main.vue';
-//   import Footer from './components/Footer.vue';
+  import Main from './components/Main.vue';
+  import Footer from './components/Footer.vue';
   
   
   export default {
     components: {
       Nav,
       Header,
-      About
-    //   Main,
-    //   Footer
+      About,
+      Main,
+      Footer
     },
   };
   </script>
