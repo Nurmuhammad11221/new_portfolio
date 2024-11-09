@@ -1,6 +1,5 @@
 <template>
-    <div class="nav__container">
-      <!-- Mobil versiya uchun menyuni ochuvchi/yopuvchi tugma -->
+    <div class="nav__container" :class="{ 'scrolled': isScrolled }">
       <button class="toggle-button" @click="toggleNavbar">
         ☰
       </button>
@@ -8,21 +7,12 @@
       <div class="left__nav">
         <h1>FINEDEV.uz</h1>
   
-        <!-- Mobil va desktop versiyada ko'rinishi har xil bo'ladigan menyu -->
-        <div :class="['menu', { 'open': isNavbarOpen }]">
-          <li>
-            <a class="nav__link" href="#home">Bosh Sahifa</a>
-          </li>
-          <li>
-            <a class="nav__link" href="">Men haqimda</a>
-          </li>
-          <li>
-            <a class="nav__link" href="">Ko'nikmalar</a>
-          </li>
-          <li>
-            <a class="nav__link" href="">Bog'lanish</a>
-          </li>
-        </div>
+        <ul :class="['menu', { 'open': isNavbarOpen }]">
+          <li><a class="nav__link" href="#home">Bosh Sahifa</a></li>
+          <li><a class="nav__link" href="#About">Men haqimda</a></li>
+          <li><a class="nav__link" href="#Diograma">Ko'nikmalar</a></li>
+          <li><a class="nav__link" href="#connection">Bog'lanish</a></li>
+        </ul>
       </div>
     </div>
   </template>
@@ -31,13 +21,23 @@
   export default {
     data() {
       return {
-        isNavbarOpen: false
+        isNavbarOpen: false,
+        isScrolled: false,  // Scroll holatini kuzatish
       };
     },
     methods: {
       toggleNavbar() {
         this.isNavbarOpen = !this.isNavbarOpen;
-      }
+      },
+      handleScroll() {
+        this.isScrolled = window.scrollY > 50; // 50px pastga tushganda navbar rangini o'zgartirish
+      },
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll); // scrollni kuzatish
+    },
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleScroll); // scrollni to'xtatish
     }
   };
   </script>
@@ -51,6 +51,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    position: sticky;
+    top: 0; /* Sahifa pastga tushganda navbar yuqorida turadi */
+    z-index: 1000; /* Navbarni yuqori qatorda qilish uchun */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .nav__container.scrolled {
+    background-color: darkblue; /* Scroll qilinganda navbar rangini o'zgartirish */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Scroll qilinganda soyani qo'shish */
   }
   
   .left__nav {
@@ -66,6 +75,8 @@
     align-items: center;
     list-style-type: none;
     gap: 40px;
+    margin: 0;
+    padding: 0;
   }
   
   .nav__link {
@@ -84,13 +95,12 @@
     border: none;
     color: white;
     cursor: pointer;
-    display: none; /* Mobilda ko'rinadi */
+    display: none;
   }
   
-  /* Mobil versiya uchun media query */
   @media (max-width: 768px) {
     .menu {
-      display: none; /* Default ko'rinmaydi */
+      display: none;
       flex-direction: column;
       position: absolute;
       top: 65px;
@@ -103,13 +113,13 @@
     }
   
     .menu.open {
-      display: flex; /* Tugma bosilganda ko'rinadi */
+      display: flex;
     }
   
     .toggle-button {
-      display: block; /* Mobilda ko'rinadi */
+      display: block;
       position: absolute;
-      right: 20px; /* O'ng tomonda bo'lishi uchun */
+      right: 20px;
       top: 20px;
     }
   
@@ -127,4 +137,4 @@
     }
   }
   </style>
-  
+   

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div id="home" class="container">
       <div class="header__title">
         <h1 class="title">
           Abdugafforov Nurmuhammad
@@ -33,7 +33,7 @@
   
   .title {
     color: white;
-    font-size: 3rem; /* Desktopda kattaroq yoziladi */
+    font-size: 3rem; 
   }
   
   .text {
@@ -41,14 +41,13 @@
     color: aliceblue;
   }
   
-  /* Mobil versiya uchun media query */
   @media (max-width: 768px) {
     .title {
-      font-size: 2rem; /* Mobilda kichikroq font */
+      font-size: 2rem; 
     }
   
     .text {
-      font-size: 16px; /* Mobilda kichikroq font */
+      font-size: 16px; 
     }
   }
   </style>

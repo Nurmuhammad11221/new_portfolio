@@ -1,5 +1,5 @@
 <template>
-    <div class="about__container">
+    <div id="About" class="about__container">
       <div class="title">
         <div class="about__title">
           <h1>MEN HAQIMDA</h1>
@@ -25,7 +25,7 @@
   <style scoped>
   .about__container {
     margin-top: 50px;
-    height: 250px;
+    height: 200px;
   }
   
   .about__title {
@@ -48,7 +48,7 @@
     display: block;
     height: 100%;
     text-align: center;
-    line-height: 60px; /* Vertikal o'rtalash */
+    line-height: 60px; 
   }
   
   .about__link:hover {
@@ -58,34 +58,33 @@
   
   .about {
     display: flex;
-    justify-content: center; /* Mobil uchun markazga joylashtirish */
+    justify-content: center; 
     align-items: center;
     margin-top: 10px;
   }
   
-  /* Mobil versiya uchun media query */
   @media (max-width: 768px) {
     .about__container {
-      height: auto; /* Ekran balandligiga moslashish */
+      height: auto; 
       padding: 20px;
     }
   
     .about__title h1 {
-      font-size: 1.5rem; /* Mobilda kichikroq font */
+      font-size: 1.5rem; 
     }
   
     .about__link {
-      width: 150px; /* Kattaroq tugma */
-      height: 50px; /* Kichikroq bo'ladi */
+      width: 150px; 
+      height: 50px; 
       margin-top: 20px;
     }
   
     .about__link-item {
-      font-size: 14px; /* Link uchun kichikroq yozuv */
+      font-size: 14px; 
     }
   
     .about {
-      flex-direction: column; /* Tugmani pastga tushirish */
+      flex-direction: column;
     }
   }
   </style>
