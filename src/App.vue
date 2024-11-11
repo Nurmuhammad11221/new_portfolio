@@ -1,7 +1,7 @@
 <template>
     <Nav />
     <Header />
-    <About/>
+    <Blog/>
     <Konikmalar />
     <Main />
     <Footer /> 
@@ -14,13 +14,14 @@
   import Main from './components/Main.vue';
   import Footer from './components/Footer.vue';
 import Konikmalar from './components/Konikmalar.vue';
+import Blog from './components/Blog.vue';
   
   
   export default {
     components: {
       Nav,
       Header,
-      About,
+      Blog,
       Konikmalar,
       Main,
       Footer
@@ -56,4 +57,5 @@ import Konikmalar from './components/Konikmalar.vue';
   } 
   
 </style>
-  
+
+

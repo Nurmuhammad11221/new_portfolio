@@ -33,6 +33,7 @@ export default {}
 <style scoped>
   .main__container {
       padding: 20px;
+      height: 400px;
   }
   
   .main__title {

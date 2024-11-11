@@ -6,8 +6,8 @@
         </div>
       </div>
   
-]      <div class="section__buttom">
-]        <div class="section__left">
+      <div class="section__buttom">
+        <div class="section__left">
           <h2 class="section__title-item">Mening ko'nikmalarim va tajribalarim</h2>
           <p class="section__text">
             HTML, CSS, JavaScript, Python, Django, Vue, React va SQL kabi texnologiyalarni mukammal egallaganman. <br>
@@ -18,7 +18,7 @@
           </p>
         </div>
   
-\        <div class="section__right">
+        <div class="section__right">
           <div v-for="(skill, index) in skills" :key="index" class="section__right-dg">
             <h4>{{ skill.name }}</h4>
             <h4>{{ skill.percentage }}%</h4>
@@ -212,4 +212,6 @@
     }
   }
   </style>
+
+
   
